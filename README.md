@@ -1,2 +1,3 @@
 # schauerlib
-Collection of personal extensions, tools, test assertion structures, and more
+
+A Collection of extension methods, tools, test assertion structures, and more.
