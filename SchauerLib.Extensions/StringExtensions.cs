@@ -14,7 +14,7 @@ namespace SchauerLib.Extensions
         /// <param name="haystack">The Haystack</param>
         /// <param name="needles">The needles</param>
         /// <returns>The haystack without all needles</returns>
-        public static string Without(this string? haystack, params string?[] needles) =>
+        public static string? Without(this string? haystack, params string?[] needles) =>
             haystack is null 
             ? null 
             : needles is null

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SchauerLib\SchauerLib.csproj" />
+    <ProjectReference Include="..\SchauerLib.Extensions\SchauerLib.Extensions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

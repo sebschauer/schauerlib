@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36623.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchauerLib", "SchauerLib\SchauerLib.csproj", "{131D3097-B566-402F-9F6B-A7C5CA0A1C52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchauerLib.Extensions", "SchauerLib.Extensions\SchauerLib.csproj", "{131D3097-B566-402F-9F6B-A7C5CA0A1C52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchauerLib.Tests", "SchauerLib.Tests\SchauerLib.Tests.csproj", "{91E6AFB8-0A80-4F89-A786-025CC8117884}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchauerLib.Extensions.Tests", "SchauerLib.Extensions.Tests\SchauerLib.Extensions.Tests.csproj", "{91E6AFB8-0A80-4F89-A786-025CC8117884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
