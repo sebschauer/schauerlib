@@ -73,4 +73,13 @@ public static class OptionBehaviour
             None<TIn> _ => None.Of<TOut>(),
             _ => throw new InvalidOperationException("unknown option type")
         };
+
+    public static TOut Reduce<TIn, TOut>(this Option<TIn> option,
+        Func<TIn, TOut> someReducer, TOut noneValue) =>
+        option switch
+        {
+            Some<TIn> some => someReducer(some.Value),
+            None<TIn> _ => noneValue,
+            _ => throw new InvalidOperationException("unknown option type")
+        };
 }
