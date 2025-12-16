@@ -55,3 +55,8 @@ nunit-*.xml
 /.vs
 /SchauerLib/.vs/SchauerLib
 /SchauerLib/.vs/ProjectEvaluation
+
+.fake
+
+# Sebschauer
+test.sh
