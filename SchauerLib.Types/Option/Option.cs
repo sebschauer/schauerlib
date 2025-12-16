@@ -18,12 +18,19 @@
 
 namespace SchauerLib.Types.Option;
 
+/// <summary>
+/// Optional data type, simulation of discriminated union
+/// <code>option = some of T | none</code>
+/// </summary>
 public abstract class Option<T>
 {
     public abstract bool IsSome { get; }
     public bool IsNone => !IsSome;
 }
 
+/// <summary>
+/// The option type containing data
+/// </summary>
 public sealed class Some<T>(T value) : Option<T>
 {
     public T Value => value;
@@ -32,18 +39,31 @@ public sealed class Some<T>(T value) : Option<T>
 
 public static class Some
 {
+    /// <summary>
+    /// Creating a Some<T> object fluently by using Some.Of("myValue");
+    /// </summary>
+    /// <returns>The Some<T> object</returns>
     public static Some<T> Of<T>(T value) =>
         new Some<T>(value);
 }
 
+/// <summary>
+/// The empty option type
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public sealed class None<T> : Option<T>
 {
+    private None() { }
     internal static None<T> Instance { get; } = new None<T>();
     public override bool IsSome => false;
 }
 
 public static class None
 {
+    /// <summary>
+    /// Get the None<T> object (there is only one singleton instance per type T)
+    /// </summary>
+    /// <returns>The None<T> object</returns>
     public static None<T> Of<T>() => 
         None<T>.Instance;
 }
