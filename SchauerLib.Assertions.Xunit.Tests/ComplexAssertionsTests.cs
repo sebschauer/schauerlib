@@ -1,5 +1,3 @@
-using SchauerLib.Assertions.Xunit;
-
 namespace SchauerLib.Assertions.Xunit.Tests;
 
 public class ComplexAssertionsTests
@@ -35,8 +33,15 @@ public class ComplexAssertionsTests
     [Fact]
     public void IfPassesMustWork()
     {
-        Assert.IfPasses(_fail).Then(() => throw new Exception("not thrown"));
-        Fail(() => Assert.IfPasses(_pass).Then(() => throw new Exception("thrown")));
+        Assert.IfPass(_fail).Then(() => throw new Exception("not thrown"));
+        Fail(() => Assert.IfPass(_pass).Then(() => throw new Exception("thrown")));
+    }
+
+    [Fact]
+    public void IfFailMustWork()
+    {
+        Assert.IfFail(_pass).Then(() => throw new Exception("not thrown"));
+        Fail(() => Assert.IfFail(_fail).Then(() => throw new Exception("thrown")));
     }
 
     private void Fail(Action action)

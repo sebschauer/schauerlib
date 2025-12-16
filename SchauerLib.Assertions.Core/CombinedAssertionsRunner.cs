@@ -2,6 +2,13 @@
 
 public static class CombinedAssertionsRunner
 {
+    public static void RunAssertions(int? min, int? max, Action firstAssert, Action secondAssert, params Action[] moreAsserts)
+    {
+        var actions = new List<Action>{ firstAssert, secondAssert };
+        actions.AddRange(moreAsserts);
+        RunAssertions(actions, min, max);
+    }
+
     public static void RunAssertions(IEnumerable<Action> actions, int? minMatches, int? maxMatches)
     {
         var matches = 0;
