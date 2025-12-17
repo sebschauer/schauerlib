@@ -59,7 +59,7 @@ public class Success<TSucc>(TSucc value) : Success<TSucc, Exception>(value)
     /// <typeparam name="TFail"></typeparam>
     /// <param name="failData"></param>
     /// <returns></returns>
-    public static Failure<TSucc, TFail> GetFailure<TSucc, TFail>(TFail failData) =>
+    public static Failure<TSucc, TFail> GetFailure<TFail>(TFail failData) =>
         new Failure<TSucc, TFail>(failData);
 }
 
