@@ -23,6 +23,27 @@ public static class ResultExtensions
     // Dynamic failure type
 
     /// <summary>
+    /// Transforms <paramref name="result"/> via the passed function
+    /// in case of success, passes Failure otherwise
+    /// </summary>
+    /// <typeparam name="TSuccIn"></typeparam>
+    /// <typeparam name="TSuccOut"></typeparam>
+    /// <typeparam name="TFail"></typeparam>
+    /// <param name="result"></param>
+    /// <param name="succesTransformer">Function transforming the success data to a new result</param>
+    /// <returns>The new result</returns>
+    /// <exception cref="InvalidOperationException">In case of result being neither success nor failure. For compiler only.</exception>
+    public static Result<TSuccOut, TFailOut> Bind<TSuccIn, TSuccOut, TFail>(
+        this Result<TSuccIn, TFail> result, 
+        Func<TSuccIn, Result<TSuccOut, TFail>> succesTransformer) =>
+        result switch
+        {
+            Success<TSuccIn, TFail> success => succesTransformer(success.Value),
+            Failure<TSuccIn, TFail> failure => Failure.Of<TSuccOut>(failure.FailData),
+            _ => throw new InvalidOperationException("unknown result type")
+        };
+
+    /// <summary>
     /// Invokes one of two functions depending on <paramref name="result"/>, 
     /// transforming either the success object or the failure object
     /// </summary>
@@ -34,7 +55,7 @@ public static class ResultExtensions
     /// <param name="succesTransformer">Function transforming the success data to a new result</param>
     /// <param name="failureTransformer">Function transforming the failure data to a new result</param>
     /// <returns>The new result</returns>
-    /// <exception cref="InvalidOperationException">In case of result is neither success nor failure. For compiler only.</exception>
+    /// <exception cref="InvalidOperationException">In case of result being neither success nor failure. For compiler only.</exception>
     public static Result<TSuccOut, TFailOut> Bind<TSuccIn, TFailIn, TSuccOut, TFailOut>(
         this Result<TSuccIn, TFailIn> result, 
         Func<TSuccIn, Result<TSuccOut, TFailOut>> succesTransformer,
@@ -58,7 +79,7 @@ public static class ResultExtensions
     /// <param name="result"></param>
     /// <param name="successTransformer">Function transforming the success to a new result</param>
     /// <returns>The new result</returns>
-    /// <exception cref="InvalidOperationException">In case of result is neither success nor failure. For compiler only.</exception>
+    /// <exception cref="InvalidOperationException">In case of result being neither success nor failure. For compiler only.</exception>
     public static Result<TSuccOut, Exception> Bind<TSuccIn, TSuccOut>(
         this Result<TSuccIn, Exception> result,
         Func<TSuccIn, Result<TSuccOut, Exception>> successTransformer) => 
