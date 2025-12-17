@@ -4,9 +4,21 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
+    
+    <PackageId>Sebschauer.SchauerLib.Assertions.Xunit</PackageId>
+    <Version>0.0.1-alpha</Version>
+    <Authors>Sebastian Schauer</Authors>
+    <Description>
+    	This package contains some extensions for the Xunit3 Assert class. The extensions
+    	make it possible to handle several assertions which depend on each other's assertion
+    	result, e.g. Assert.EitherOr() checks whether exact one of the passed assertions
+    	passed the test.
+    </Description>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/sebschauer/schauerlib</PackageProjectUrl>
+    <Copyright>Sebastian Schauer 2025</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +34,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchauerLib.Assertions.Core\SchauerLib.Assertions.Core.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="Readme.md" pack="true" PackagePath="." />
   </ItemGroup>
 
 </Project>
