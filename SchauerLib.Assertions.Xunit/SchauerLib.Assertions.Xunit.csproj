@@ -4,8 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <IsPackable>false</IsPackable>
-    
     <PackageId>Sebschauer.SchauerLib.Assertions.Xunit</PackageId>
     <Version>0.0.1-alpha</Version>
     <Authors>Sebastian Schauer</Authors>
@@ -22,13 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="xunit.analyzers" Version="1.26.0" />
-    <PackageReference Include="xunit.v3.core" Version="3.2.1" />
+    <PackageReference Include="xunit.v3.extensibility.core" Version="3.2.1" />
     <PackageReference Include="xunit.v3.assert.source" Version="3.2.1" />
   </ItemGroup>
 
@@ -37,7 +29,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="Readme.md" pack="true" PackagePath="." />
+    <None Include="Readme.md" Pack="true" PackagePath="." />
   </ItemGroup>
 
 </Project>
