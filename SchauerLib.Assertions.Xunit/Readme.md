@@ -9,7 +9,7 @@ This nuget contains some Xunit 3 Assert extensions for handling multiple asserti
 - `NeitherNor(assertion)`: Passes if all passed assertions are failing.
 - `Or(assertions)`: Passes if at least one of the passed assertions passes.
 - `PassesExactly(min, max, assertions)`: Passes if the number of passing assertions lies in the inclusive range `min <= passings <= max`. Ignores Checking a range boundary if it is null.
-- `IfPass(assertion1).Then(assertion2)`, its alias `If` and the opposite function `IfFail` check `assertion2` only if `assertion1` passed (or failed in the latter case).
+- `IfPass(assertion1).Then(assertion2).Else(assertion3)`, its alias `If` and the opposite function `IfFail` check `assertion2` only if `assertion1` passed (or failed in the latter case), else (if defined) it checks `assertion3`.
 
 ## Example
 
@@ -21,7 +21,8 @@ Assert.EitherOr(
 
 Assert
   .IfFail(() => Assert.Equal(0, x))
-  .Then(  () => Assert.NotEqual(0, 1 / x));
+  .Then(  () => Assert.NotEqual(0, 1 / x))
+  .Else(  () => Assert.Equal("impossible", divisionState));
 ```
 
 

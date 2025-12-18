@@ -25,15 +25,30 @@ namespace SchauerLib.Assertions.Core;
 /// <param name="checkThenOnPass">Whether the ifAction shall pass (true) or fail (false) to check the thenAction</param>
 public class IfThenCollector(Action ifAction, bool checkThenOnPass)
 {
+    private bool runThenAction = CombinedAssertionsRunner.RunAction(ifAction).Success == checkThenOnPass;
+
     /// <summary>
     /// Triggers the conditional test, takes the assertion to assert maybe
     /// </summary>
     /// <param name="thenAction"></param>
-    public void Then(Action thenAction)
+    public IfThenElseCollector Then(Action thenAction)
     {
-        if (CombinedAssertionsRunner.RunAction(ifAction).Success == checkThenOnPass)
+        if (runThenAction)
         {
             thenAction();
+        }
+
+        return new IfThenElseCollector(!runThenAction);
+    }
+}
+
+public class IfThenElseCollector(bool runElseAction)
+{
+    public void Else(Action elseAction)
+    {
+        if (runElseAction)
+        {
+            elseAction();
         }
     }
 }
