@@ -82,7 +82,7 @@ public class GenericCollectionExtensionTests
             var (my, other) = (new BaseClass(), new BaseClass());
             var list = new List<BaseClass>{ my, other, my, other, other };
             var result = list.Without(my);
-            Assert.Equal(new List<BaseClass>{other, other, other, my}, result.ToList());
+            Assert.Equal(new List<BaseClass>{other, other, other}, result.ToList());
         }
 
         record TestRecord(string Id);
