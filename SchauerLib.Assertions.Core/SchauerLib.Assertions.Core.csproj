@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     
     <PackageId>Sebschauer.SchauerLib.Assertions.Core</PackageId>
-    <Version>0.0.1-alpha</Version>
     <Authors>Sebastian Schauer</Authors>
     <Description>
     	This package contains the core functionality for the packages Sebschauer.SchauerLib.Assertions.Xunit and Sebschauer.SchauerLib.Assertions.MsTest; do not install it alone.

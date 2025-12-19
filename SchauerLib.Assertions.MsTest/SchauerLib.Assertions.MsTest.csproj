@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     
     <PackageId>Sebschauer.SchauerLib.Assertions.MsTest</PackageId>
-    <Version>0.0.1-alpha</Version>
     <Authors>Sebastian Schauer</Authors>
     <Description>
     	This package contains some extensions for the MSTest Assert class. The extensions

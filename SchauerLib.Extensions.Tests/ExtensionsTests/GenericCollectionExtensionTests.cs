@@ -51,4 +51,49 @@ public class GenericCollectionExtensionTests
     class SubClassA : BaseClass { }
     class SubClassB : BaseClass { }
 
+    public class WithoutShould
+    {
+        private List<int> list = new List<int>{ 1, 2, 3, 4, 5, 4, 3, 2, 1 };
+
+        [Fact]
+        public void RemoveEntriesFromCollection()
+        {
+            var result = list.Without(2, 3);
+            Assert.Equivalent(new List<int>{1, 4, 5, 4, 1}, result.ToList());
+        }
+
+        [Fact]
+        public void IgnoreNonMatchingItems()
+        {
+            var result = list.Without(2, 6, 7, 8);
+            Assert.Equivalent(new List<int>{1, 3, 4, 5, 4, 3, 1}, result.ToList());
+        }
+
+        [Fact]
+        public void DoNothingOnMissingEntries()
+        {
+            var result = list.Without();
+            Assert.Equivalent(list, result.ToList());
+        }
+
+        [Fact]
+        public void HandleClassesByReference()
+        {
+            var (my, other) = (new BaseClass(), new BaseClass());
+            var list = new List<BaseClass>{ my, other, my, other, other };
+            var result = list.Without(my);
+            Assert.Equal(new List<BaseClass>{other, other, other, my}, result.ToList());
+        }
+
+        record TestRecord(string Id);
+
+        [Fact]
+        public void HandleRecordsByValue()
+        {
+            var (my, other) = (new TestRecord("sameValue"), new TestRecord("sameValue"));
+            var list = new List<TestRecord>{ my, other, my, other, other };
+            var result = list.Without(my);
+            Assert.Equal(Array.Empty<TestRecord>(), result.ToArray());
+        }
+    }
 }

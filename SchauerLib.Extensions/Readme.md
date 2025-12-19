@@ -9,6 +9,9 @@ This nuget contains a collection of extension methods I found useful over time:
 - `bool IsOneOf(this T el, params T[] candidates)`: Returns whether `el` is one of the candidates. Makes code more readable: 
   - Before: `if (new[] { 'w', 'a', 's', 'd' }.Contains(myChar)) { ... }`
   - After: `if (myChar.IsOneOf('w', 'a', 's', 'd')) { ... }`
+- `IEnumerable<T> Without<T>(this IEnumerable<T> list, params T[] dels)`: Removes the given `dels` from `list`.
+  - Before: `var cleaned = list.Where(x => !new List<MyType>{ x1, x2, x3 }.Contains(x));`
+  - After: `var cleaned = list.Without(x1, x2, x3);`
 - `string? Without(this string? haystack, params string?[] needles)`: Removes the needles from haystack, preserving null values.
   - Before: `var cleaned = rawString.Replace(".", "").Replace(",", "").Replace(" ", "");`
   - After: `var cleaned = rawString.Without(".", ",", " ");`

@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     
     <PackageId>Sebschauer.SchauerLib.Types</PackageId>
-    <Version>0.0.1-alpha</Version>
     <Authors>Sebastian Schauer</Authors>
     <Description>
     	This package contains simulations of type unions known from functional languages: Option (Some | None) and Result (Success | Failure)
