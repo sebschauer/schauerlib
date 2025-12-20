@@ -59,4 +59,4 @@ nunit-*.xml
 .fake
 
 # Sebschauer
-test.sh
+runall.sh

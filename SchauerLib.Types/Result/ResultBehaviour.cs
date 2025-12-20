@@ -128,6 +128,32 @@ public static class ResultExtensions
             _ => throw new InvalidOperationException("unknown result type")
         };
 
+    /// <summary>
+    /// Reduces the result object to an object of one type invoking
+    /// one of the two passed functions.
+    /// </summary>
+    /// <typeparam name="TSucc"></typeparam>
+    /// <typeparam name="TFail"></typeparam>
+    /// <typeparam name="TOut"></typeparam>
+    /// <typeparam name="TState"></typeparam>
+    /// <param name="result">The result input object</param>
+    /// <param name="successReducer"></param>
+    /// <param name="failureReducer"></param>
+    /// <param name="state"></param>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    public static TOut Reduce<TSucc, TFail, TOut, TState>(
+        this Result<TSucc, TFail> result,
+        Func<TSucc, TState, TOut> successReducer,
+        Func<TFail, TOut> failureReducer,
+        TState state) =>
+        result switch
+        {
+            Success<TSucc, TFail> success => successReducer(success.Value, state),
+            Failure<TSucc, TFail> failure => failureReducer(failure.FailData),
+            _ => throw new InvalidOperationException("unknown result type")
+        };
+
 
     // Fixed failure type: Exception
 

@@ -4,6 +4,20 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    
+    <PackageId>Sebschauer.SchauerLib.Types</PackageId>
+    <Authors>Sebastian Schauer</Authors>
+    <Description>
+    	This package contains simulations of type unions known from functional languages: Option (Some | None) and Result (Success | Failure)
+    </Description>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/sebschauer/schauerlib</PackageProjectUrl>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <Copyright>Sebastian Schauer 2025</Copyright>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="Readme.md" pack="true" PackagePath="." />
+  </ItemGroup>
 
 </Project>

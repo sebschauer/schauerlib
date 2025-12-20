@@ -3,6 +3,20 @@
   <PropertyGroup>
     <TargetFramework>net8</TargetFramework>
     <Nullable>enable</Nullable>
+    
+    <PackageId>Sebschauer.SchauerLib.Extensions</PackageId>
+    <Authors>Sebastian Schauer</Authors>
+    <Description>
+    	This package contains some extension methods for collections, strings and generic elements.
+    </Description>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/sebschauer/schauerlib</PackageProjectUrl>
+    <Copyright>Sebastian Schauer 2025</Copyright>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="Readme.md" Pack="true" PackagePath="." />
+  </ItemGroup>
 
 </Project>

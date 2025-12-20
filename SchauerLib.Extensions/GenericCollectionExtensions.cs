@@ -17,6 +17,8 @@
  */
 
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SchauerLib.Extensions;
 
@@ -54,4 +56,14 @@ public static class GenericCollectionExtensions
 
         return null;
     }
+
+    /// <summary>
+    /// Removes the given elements from the list
+    /// </summary>
+    /// <typeparam name="T">type of elements and list</typeparam>
+    /// <param name="collection">the collection to be removed from</param>
+    /// <param name="removeItems">the item to be removed</param>
+    /// <returns>list without removeItems</returns>
+    public static IEnumerable<T> Without<T>(this IEnumerable<T> collection, params T[] removeItems) =>
+        collection.Where(item => !removeItems?.Contains(item) ?? true);
 }

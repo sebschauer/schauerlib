@@ -51,15 +51,33 @@ public class ComplexAssertionsTests
     [Fact]
     public void IfPassesMustWork()
     {
-        Assert.IfPass(_fail).Then(() => throw new Exception("not thrown"));
-        Fail(() => Assert.IfPass(_pass).Then(() => throw new Exception("thrown")));
+        string path = "";
+        Assert.IfPass(_fail)
+            .Then(() => path = "then")
+            .Else(() => path = "else");
+        Assert.Equal("else", path);
+
+        path = "";
+        Assert.IfPass(_pass)
+            .Then(() => path = "then")
+            .Else(() => path = "else");
+        Assert.Equal("then", path);
     }
 
     [Fact]
     public void IfFailMustWork()
     {
-        Assert.IfFail(_pass).Then(() => throw new Exception("not thrown"));
-        Fail(() => Assert.IfFail(_fail).Then(() => throw new Exception("thrown")));
+        string path = "";
+        Assert.IfFail(_pass)
+            .Then(() => path = "then")
+            .Else(() => path = "else");
+        Assert.Equal("else", path);
+
+        path = "";
+        Assert.IfFail(_fail)
+            .Then(() => path = "then")
+            .Else(() => path = "else");
+        Assert.Equal("then", path);
     }
 
     private void Fail(Action action)

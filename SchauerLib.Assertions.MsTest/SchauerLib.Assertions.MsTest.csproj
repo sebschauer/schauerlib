@@ -4,20 +4,31 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
+    
+    <PackageId>Sebschauer.SchauerLib.Assertions.MsTest</PackageId>
+    <Authors>Sebastian Schauer</Authors>
+    <Description>
+    	This package contains some extensions for the MSTest Assert class. The extensions
+    	make it possible to handle several assertions which depend on each other's assertion
+    	result, e.g. Assert.That.EitherOr() checks whether exact one of the passed assertions
+    	passed the test.
+    </Description>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/sebschauer/schauerlib</PackageProjectUrl>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <Copyright>Sebastian Schauer 2025</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.0.4" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.4" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SchauerLib.Assertions.Core\SchauerLib.Assertions.Core.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="Readme.md" pack="true" PackagePath="." />
   </ItemGroup>
 
 </Project>
